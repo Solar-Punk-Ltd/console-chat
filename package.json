@@ -1,0 +1,17 @@
+{
+  "name": "console-chat",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Aggregation-based chat, with feeds. This is a benchmark program for that.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Peter Ott, Solar Punk",
+  "license": "ISC",
+  "dependencies": {
+    "@ethersphere/bee-js": "^6.9.1",
+    "@fairdatasociety/bmt-js": "^2.1.0",
+    "ethers": "^5.7.2"
+  }
+}
