@@ -60,7 +60,7 @@ function Aggregation() {
             for (let i = 0; i < X_NUMBER; i++) {
                 agState = yield (0, chatAggregator_1.doAggregationCycle)(agState, topic, chatWriter, stamp);
                 agState = yield (0, chatAggregator_1.doUpdateUserList)(topic, agState);
-                yield (0, common_1.sleep)(3 * 1000); // 3 seconds
+                yield (0, common_1.sleep)(1 * 1000); // 1 second(s)
             }
         }
         catch (error) {
@@ -91,7 +91,7 @@ function Writer() {
                 const ref = yield (0, chat_1.writeToOwnFeed)(topic, streamerAddress, wState.ownFeedIndex, message, stamp, wallet);
                 // Increment own feed index
                 wState = (0, chatUserSide_1.chatUserSideReducer)(wState, { type: chatUserSide_1.ChatActions.UPDATE_OWN_FEED_INDEX, payload: { ownFeedIndex: wState.ownFeedIndex + 1 } });
-                yield (0, common_1.sleep)(2 * 1000); // 2 seconds
+                yield (0, common_1.sleep)(6 * 1000); // 6 seconds
             }
         }
         catch (error) {
@@ -115,7 +115,7 @@ function Reader() {
             for (let i = 0; i < X_NUMBER; i++) {
                 rState = yield (0, chatUserSide_1.readNextMessage)(rState, topic, streamerAddress);
                 console.info(rState.messages);
-                yield (0, common_1.sleep)(1 * 3000); // 1 second
+                yield (0, common_1.sleep)(1 * 3000); // 1 second(s)
             }
         }
         catch (error) {
