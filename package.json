@@ -1,7 +1,7 @@
 {
   "name": "console-chat",
   "version": "1.0.0",
-  "type": "module",
+  "type": "commonjs",
   "description": "Aggregation-based chat, with feeds. This is a benchmark program for that.",
   "main": "index.js",
   "scripts": {
@@ -12,14 +12,15 @@
   "dependencies": {
     "@ethersphere/bee-js": "^6.9.1",
     "@fairdatasociety/bmt-js": "^2.1.0",
+    "dotenv": "^16.4.5",
     "ethers": "^5.7.2"
   },
   "devDependencies": {
-    "typescript": "^5.4.5",
     "@types/lodash": "^4.17.0",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@typescript-eslint/eslint-plugin": "^6.14.0",
-    "@typescript-eslint/parser": "^6.14.0"
+    "@typescript-eslint/parser": "^6.14.0",
+    "typescript": "^5.4.5"
   }
 }
