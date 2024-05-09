@@ -6,7 +6,7 @@ import {
 } from '../utils/graffitiUtils';
 import { generateRoomId, generateUniqId, generateUserOwnedFeedId, generateUsersFeedId, validateUserObject } from '../utils/chat';
 import { Signature, Wallet, ethers } from 'ethers';
-import { HexString } from '../node_modules/@ethersphere/bee-js/dist/types/utils/';
+import { HexString } from 'node_modules/@ethersphere/bee-js/dist/types/utils/hex';
 import { sleep } from '../utils/common';
 import { makeChunkedFile } from '@fairdatasociety/bmt-js';
 import { bytesToHex } from '../utils/beeJs/hex';
