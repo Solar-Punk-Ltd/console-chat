@@ -10,6 +10,7 @@ import { HexString } from 'node_modules/@ethersphere/bee-js/dist/types/utils/hex
 import { sleep } from '../utils/common';
 import { makeChunkedFile } from '@fairdatasociety/bmt-js';
 import { bytesToHex } from '../utils/beeJs/hex';
+import { logErrorToFile } from '../utils/other';
 
 export type RoomID = string;
 
@@ -65,7 +66,8 @@ export async function initChatRoom(
     }
 
   } catch (error) {
-    console.error('There was an error while initalizing the chat for the feed (initChatRoom): ', error);
+    console.error('There was an error while initalizing the chat for the feed (initChatRoom).');
+    logErrorToFile(`There was an error while initalizing the chat for the feed (initChatRoom): ${error}`);
     return null;
   }
 }
@@ -97,7 +99,8 @@ async function createUsersFeed(topic: string, stamp: BatchId) {
     return manifestResult.reference;
 
   } catch (error) {
-    console.error("There was an error while creating Users feed: ", error);
+    console.error("There was an error while creating Users feed.");
+    logErrorToFile(`There was an error while creating Users feed: ${error}`);
     return null;
   }
 }
@@ -114,7 +117,8 @@ async function createAggregatedFeedWriter(streamTopic: string, wallet: Wallet): 
     return feedWriter;
 
   } catch (error) {
-    console.error("There was an error while trying to create the AggregatedChat feed: ", error);
+    console.error("There was an error while trying to create the AggregatedChat feed.");
+    logErrorToFile(`There was an error while trying to create the AggregatedChat feed: ${error}`);
     return null;
   }
 }
@@ -183,14 +187,16 @@ export async function registerUser(topic: string, streamerAddress: EthAddress, u
           }
         }
       } catch (error) {
-        console.error(`Error registering User ${user.username}, retrying...`, error);
+        console.error(`Error registering User ${user.username}, retrying...`);
+        logErrorToFile(`Error registering User ${user.username}, retrying... ${error}`);
       }
     } while (!uploadSuccess);
 
     return feedReference;
  
   } catch (error) {
-    console.error("There was an error while trying to register user (chatroom): ", error);
+    console.error("There was an error while trying to register user (chatroom)");
+    logErrorToFile(`There was an error while trying to register user (chatroom): ${error}`);
     return null;
   }
 }
@@ -227,7 +233,8 @@ export async function writeToOwnFeed(
     return ref;
 
   } catch (error) {
-    console.error(`There was an error while trying to write own feed (chat), index: ${index}, message: ${messageObj.message}: `, error);
+    console.error(`There was an error while trying to write own feed (chat), index: ${index}, message: ${messageObj.message}`);
+    logErrorToFile(`There was an error while trying to write own feed (chat), index: ${index}, message: ${messageObj.message}: ${error}`);
     return null;
   }
 }
@@ -277,7 +284,8 @@ export async function fetchAllMessages(
     return Promise.all(promiseList);
 
   } catch (error) {
-    console.error("There was an error reading user feeds (fetchAllMessages): ", error);
+    console.error("There was an error reading user feeds (fetchAllMessages)");
+    logErrorToFile(`There was an error reading user feeds (fetchAllMessages): ${error}`)
     return null;
   }
 }
@@ -304,7 +312,8 @@ export async function writeOneMessageToAggregatedFeed(
     return chatIndex+1;
     
   } catch (error) {
-    console.error("There was an error while trying to write aggregated feed for the chat: ", error);
+    console.error("There was an error while trying to write aggregated feed for the chat.");
+    logErrorToFile(`There was an error while trying to write aggregated feed for the chat: ${error}`);
     return null;
   }
 }
@@ -342,7 +351,8 @@ export async function updateUserList(
           }
         }
       } catch (error) {
-        console.error("Skipping element: ", error);
+        console.error("Skipping element.");
+        logErrorToFile(`Skipping element: ${error}`);
         continue;
       }
     }
@@ -351,7 +361,8 @@ export async function updateUserList(
     return { users, lastReadIndex: lastIndex };
 
   } catch (error) {
-    console.error("There was an error while trying to insert new users to users state: ", error);
+    console.error("There was an error while trying to insert new users to users state.");
+    logErrorToFile(`There was an error while trying to insert new users to users state: ${error}`);
     return null;
   }
 }
@@ -424,7 +435,10 @@ export async function readSingleMessage(
     return JSON.parse(new TextDecoder().decode(data)) as MessageData;   // Return message object
   } catch (e: any) {
     // Don't spam the console
-    if (e.status != 500) console.error('There was an error, while reading single Message: ', e);
+    if (e.status != 500) {
+      console.error('There was an error, while reading single Message');
+      logErrorToFile(`There was an error, while reading single Message: ${e}`);
+    }
     return false;
   }
 }
@@ -436,7 +450,8 @@ export async function getGraffitiFeedIndex(roomId: RoomID) {
     const feedUpdate = await feedReader.download();
     return parseInt(feedUpdate.feedIndex as string, 16);
   } catch (error) {
-    console.error('There was an error while trying to get feed index: ', error);
+    console.error('There was an error while trying to get feed index');
+    logErrorToFile(`There was an error while trying to get feed index: ${error}`);
     return -1;
   }
 }

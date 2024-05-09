@@ -17,6 +17,7 @@ const ethers_1 = require("ethers");
 const common_1 = require("../utils/common");
 const bmt_js_1 = require("@fairdatasociety/bmt-js");
 const hex_1 = require("../utils/beeJs/hex");
+const other_1 = require("../utils/other");
 // Initialize the bee instance
 const bee = new bee_js_1.Bee('http://localhost:1633');
 //const bee = new Bee("http://161.97.125.121:1933");
@@ -42,7 +43,8 @@ function initChatRoom(topic, privKey, stamp) {
             };
         }
         catch (error) {
-            console.error('There was an error while initalizing the chat for the feed (initChatRoom): ', error);
+            console.error('There was an error while initalizing the chat for the feed (initChatRoom).');
+            (0, other_1.logErrorToFile)(`There was an error while initalizing the chat for the feed (initChatRoom): ${error}`);
             return null;
         }
     });
@@ -73,7 +75,8 @@ function createUsersFeed(topic, stamp) {
             return manifestResult.reference;
         }
         catch (error) {
-            console.error("There was an error while creating Users feed: ", error);
+            console.error("There was an error while creating Users feed.");
+            (0, other_1.logErrorToFile)(`There was an error while creating Users feed: ${error}`);
             return null;
         }
     });
@@ -90,7 +93,8 @@ function createAggregatedFeedWriter(streamTopic, wallet) {
             return feedWriter;
         }
         catch (error) {
-            console.error("There was an error while trying to create the AggregatedChat feed: ", error);
+            console.error("There was an error while trying to create the AggregatedChat feed.");
+            (0, other_1.logErrorToFile)(`There was an error while trying to create the AggregatedChat feed: ${error}`);
             return null;
         }
     });
@@ -159,13 +163,15 @@ function registerUser(topic, streamerAddress, username, stamp) {
                     }
                 }
                 catch (error) {
-                    console.error(`Error registering User ${user.username}, retrying...`, error);
+                    console.error(`Error registering User ${user.username}, retrying...`);
+                    (0, other_1.logErrorToFile)(`Error registering User ${user.username}, retrying... ${error}`);
                 }
             } while (!uploadSuccess);
             return feedReference;
         }
         catch (error) {
-            console.error("There was an error while trying to register user (chatroom): ", error);
+            console.error("There was an error while trying to register user (chatroom)");
+            (0, other_1.logErrorToFile)(`There was an error while trying to register user (chatroom): ${error}`);
             return null;
         }
     });
@@ -196,7 +202,8 @@ function writeToOwnFeed(topic, streamerAddress, index, messageObj, stamp) {
             return ref;
         }
         catch (error) {
-            console.error(`There was an error while trying to write own feed (chat), index: ${index}, message: ${messageObj.message}: `, error);
+            console.error(`There was an error while trying to write own feed (chat), index: ${index}, message: ${messageObj.message}`);
+            (0, other_1.logErrorToFile)(`There was an error while trying to write own feed (chat), index: ${index}, message: ${messageObj.message}: ${error}`);
             return null;
         }
     });
@@ -237,7 +244,8 @@ function fetchAllMessages(userList, streamTopic) {
             return Promise.all(promiseList);
         }
         catch (error) {
-            console.error("There was an error reading user feeds (fetchAllMessages): ", error);
+            console.error("There was an error reading user feeds (fetchAllMessages)");
+            (0, other_1.logErrorToFile)(`There was an error reading user feeds (fetchAllMessages): ${error}`);
             return null;
         }
     });
@@ -258,7 +266,8 @@ function writeOneMessageToAggregatedFeed(message, chatWriter, chatIndex, stamp) 
             return chatIndex + 1;
         }
         catch (error) {
-            console.error("There was an error while trying to write aggregated feed for the chat: ", error);
+            console.error("There was an error while trying to write aggregated feed for the chat.");
+            (0, other_1.logErrorToFile)(`There was an error while trying to write aggregated feed for the chat: ${error}`);
             return null;
         }
     });
@@ -295,7 +304,8 @@ function updateUserList(topic_1) {
                     }
                 }
                 catch (error) {
-                    console.error("Skipping element: ", error);
+                    console.error("Skipping element.");
+                    (0, other_1.logErrorToFile)(`Skipping element: ${error}`);
                     continue;
                 }
             }
@@ -303,7 +313,8 @@ function updateUserList(topic_1) {
             return { users, lastReadIndex: lastIndex };
         }
         catch (error) {
-            console.error("There was an error while trying to insert new users to users state: ", error);
+            console.error("There was an error while trying to insert new users to users state.");
+            (0, other_1.logErrorToFile)(`There was an error while trying to insert new users to users state: ${error}`);
             return null;
         }
     });
@@ -365,8 +376,10 @@ function readSingleMessage(index, streamTopic, streamerAddress) {
         }
         catch (e) {
             // Don't spam the console
-            if (e.status != 500)
-                console.error('There was an error, while reading single Message: ', e);
+            if (e.status != 500) {
+                console.error('There was an error, while reading single Message');
+                (0, other_1.logErrorToFile)(`There was an error, while reading single Message: ${e}`);
+            }
             return false;
         }
     });
@@ -381,7 +394,8 @@ function getGraffitiFeedIndex(roomId) {
             return parseInt(feedUpdate.feedIndex, 16);
         }
         catch (error) {
-            console.error('There was an error while trying to get feed index: ', error);
+            console.error('There was an error while trying to get feed index');
+            (0, other_1.logErrorToFile)(`There was an error while trying to get feed index: ${error}`);
             return -1;
         }
     });

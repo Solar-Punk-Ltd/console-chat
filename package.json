@@ -5,7 +5,7 @@
   "description": "Aggregation-based chat, with feeds. This is a benchmark program for that.",
   "main": "index.js",
   "scripts": {
-    "start": "node dist/app.js"
+    "start": "tsc && node dist/app.js"
   },
   "author": "Peter Ott, Solar Punk",
   "license": "ISC",
