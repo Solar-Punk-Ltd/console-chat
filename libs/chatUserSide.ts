@@ -88,18 +88,20 @@ export function chatUserSideReducer(state: State, action: ChatAction): State {
   }
 }
 
-export async function readNextMessage(state: State, streamTopic: string, streamerAddress: EthAddress, dispatch: React.Dispatch<ChatAction>) {
+export async function readNextMessage(state: State, streamTopic: string, streamerAddress: EthAddress): Promise<State> {
   try {
     const result = await readSingleMessage(state.chatIndex, streamTopic, streamerAddress);
     if (!result) throw 'Error reading message!';
 
-    dispatch({ type: ChatActions.ADD_MESSAGE, payload: { message: result } });
-    dispatch({ type: ChatActions.ARRANGE });
-    dispatch({ type: ChatActions.UPDATE_CHAT_INDEX, payload: { chatIndex: state.chatIndex + 1 } });
+    state = chatUserSideReducer(state, { type: ChatActions.ADD_MESSAGE, payload: { message: result } });                            // Add messagse
+    state = chatUserSideReducer(state, { type: ChatActions.ARRANGE });                                                              // Arrange messages
+    state = chatUserSideReducer(state, { type: ChatActions.UPDATE_CHAT_INDEX, payload: { chatIndex: state.chatIndex + 1 } });       // Increment chat index
+
+    return state;
 
   } catch (error) {
     // Currently we can't distinguish "no new messages" from error
     console.info("No new messages this time.");
-    return null;
+    return state;
   }
 }

@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 dotenv.config();
 import { chatAggregatorReducer, doAggregationCycle, doUpdateUserList, initialStateForChatAggregator } from './libs/chatAggregator';
-import { ChatActions, chatUserSideReducer, initialStateForChatUserSide } from './libs/chatUserSide';
+import { ChatActions, chatUserSideReducer, initialStateForChatUserSide, readNextMessage } from './libs/chatUserSide';
 import { showOptions } from './utils/other';
 import { EthAddress, MessageData, initChatRoom, registerUser, writeToOwnFeed } from './libs/chat';
 import { BatchId, FeedWriter } from '@ethersphere/bee-js';
@@ -28,7 +28,7 @@ readline.question('Choose an option: ', (option: string) => {
         Writer();
         break;
       case '3':
-        console.log("Option 3");
+        Reader();
         break;
       default:
         console.log('Invalid option.');
@@ -65,7 +65,7 @@ async function Writer() {
   try {
     const topic = process.env.TOPIC as string;
     const stamp = process.env.STAMP as BatchId;
-    const streamerAddress = "0xeD159dF6717cFa27cfCAC26f9efC2d7980debD49" as EthAddress;
+    const streamerAddress = process.env.STREAMER_ADDRESS as EthAddress;
     const username = "Tester";
     const wallet = ethers.Wallet.createRandom();
 
@@ -86,7 +86,6 @@ async function Writer() {
       await sleep(2 * 1000);        // 2 seconds
     }
 
-    // Periodically write a new message, like "MESSAGE 1"
   } catch (error) {
     console.error("Error in Writer: ", error);
   }
@@ -95,7 +94,22 @@ async function Writer() {
 // User who reads
 async function Reader() {
   try {
-    // Read the feed
+    const topic = process.env.TOPIC as string;
+    const stamp = process.env.STAMP as BatchId;
+    const streamerAddress = process.env.STREAMER_ADDRESS as EthAddress;
+    const username = "Reader";
+    const wallet = ethers.Wallet.createRandom();
+
+    const registerResult = await registerUser(topic, username, stamp, wallet);
+    if (!registerResult) throw "Error while registering user!";
+
+    // Read messages in a loop
+    for (let i = 0; i < X_NUMBER; i++) {
+      rState = await readNextMessage(rState, topic, streamerAddress);
+      console.info(rState.messages);
+      await sleep(1 * 3000);        // 1 second
+    }
+
   } catch (error) {
     console.error("Error in Reader: ", error);
   }

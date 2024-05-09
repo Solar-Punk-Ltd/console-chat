@@ -39,7 +39,7 @@ readline.question('Choose an option: ', (option) => {
             Writer();
             break;
         case '3':
-            console.log("Option 3");
+            Reader();
             break;
         default:
             console.log('Invalid option.');
@@ -74,7 +74,7 @@ function Writer() {
         try {
             const topic = process.env.TOPIC;
             const stamp = process.env.STAMP;
-            const streamerAddress = "0xeD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+            const streamerAddress = process.env.STREAMER_ADDRESS;
             const username = "Tester";
             const wallet = ethers_1.ethers.Wallet.createRandom();
             const registerResult = yield (0, chat_1.registerUser)(topic, username, stamp, wallet);
@@ -93,7 +93,6 @@ function Writer() {
                 wState = (0, chatUserSide_1.chatUserSideReducer)(wState, { type: chatUserSide_1.ChatActions.UPDATE_OWN_FEED_INDEX, payload: { ownFeedIndex: wState.ownFeedIndex + 1 } });
                 yield (0, common_1.sleep)(2 * 1000); // 2 seconds
             }
-            // Periodically write a new message, like "MESSAGE 1"
         }
         catch (error) {
             console.error("Error in Writer: ", error);
@@ -104,7 +103,20 @@ function Writer() {
 function Reader() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            // Read the feed
+            const topic = process.env.TOPIC;
+            const stamp = process.env.STAMP;
+            const streamerAddress = process.env.STREAMER_ADDRESS;
+            const username = "Reader";
+            const wallet = ethers_1.ethers.Wallet.createRandom();
+            const registerResult = yield (0, chat_1.registerUser)(topic, username, stamp, wallet);
+            if (!registerResult)
+                throw "Error while registering user!";
+            // Read messages in a loop
+            for (let i = 0; i < X_NUMBER; i++) {
+                rState = yield (0, chatUserSide_1.readNextMessage)(rState, topic, streamerAddress);
+                console.info(rState.messages);
+                yield (0, common_1.sleep)(1 * 3000); // 1 second
+            }
         }
         catch (error) {
             console.error("Error in Reader: ", error);

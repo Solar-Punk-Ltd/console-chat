@@ -1,2 +1,112 @@
 2024-05-09T18:16:35.677Z - Error: There was an error while trying to register user (chatroom): ReferenceError: localStorage is not defined
 
+2024-05-09T18:28:58.170Z - Error: There was an error while creating Users feed: This feed already exists!
+
+2024-05-09T18:28:58.171Z - Error: There was an error while initalizing the chat for the feed (initChatRoom): Could not create Users feed!
+
+2024-05-09T18:29:09.441Z - Error: There was an error, while reading single Message: TypeError: Invalid HexEthAddress: value not valid hex string of length 40: "0xeD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+
+2024-05-09T18:29:12.456Z - Error: There was an error, while reading single Message: TypeError: Invalid HexEthAddress: value not valid hex string of length 40: "0xeD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+
+2024-05-09T18:29:15.462Z - Error: There was an error, while reading single Message: TypeError: Invalid HexEthAddress: value not valid hex string of length 40: "0xeD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+
+2024-05-09T18:29:18.468Z - Error: There was an error, while reading single Message: TypeError: Invalid HexEthAddress: value not valid hex string of length 40: "0xeD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+
+2024-05-09T18:29:21.473Z - Error: There was an error, while reading single Message: TypeError: Invalid HexEthAddress: value not valid hex string of length 40: "0xeD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+
+2024-05-09T18:29:24.480Z - Error: There was an error, while reading single Message: TypeError: Invalid HexEthAddress: value not valid hex string of length 40: "0xeD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+
+2024-05-09T18:29:27.488Z - Error: There was an error, while reading single Message: TypeError: Invalid HexEthAddress: value not valid hex string of length 40: "0xeD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+
+2024-05-09T18:29:30.494Z - Error: There was an error, while reading single Message: TypeError: Invalid HexEthAddress: value not valid hex string of length 40: "0xeD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+
+2024-05-09T18:29:33.501Z - Error: There was an error, while reading single Message: TypeError: Invalid HexEthAddress: value not valid hex string of length 40: "0xeD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+
+2024-05-09T18:29:36.509Z - Error: There was an error, while reading single Message: TypeError: Invalid HexEthAddress: value not valid hex string of length 40: "0xeD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+
+2024-05-09T18:29:39.516Z - Error: There was an error, while reading single Message: TypeError: Invalid HexEthAddress: value not valid hex string of length 40: "0xeD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+
+2024-05-09T18:29:42.522Z - Error: There was an error, while reading single Message: TypeError: Invalid HexEthAddress: value not valid hex string of length 40: "0xeD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+
+2024-05-09T18:29:45.529Z - Error: There was an error, while reading single Message: TypeError: Invalid HexEthAddress: value not valid hex string of length 40: "0xeD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+
+2024-05-09T18:29:48.535Z - Error: There was an error, while reading single Message: TypeError: Invalid HexEthAddress: value not valid hex string of length 40: "0xeD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+
+2024-05-09T18:29:51.540Z - Error: There was an error, while reading single Message: TypeError: Invalid HexEthAddress: value not valid hex string of length 40: "0xeD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+
+2024-05-09T18:29:54.546Z - Error: There was an error, while reading single Message: TypeError: Invalid HexEthAddress: value not valid hex string of length 40: "0xeD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+
+2024-05-09T18:29:57.552Z - Error: There was an error, while reading single Message: TypeError: Invalid HexEthAddress: value not valid hex string of length 40: "0xeD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+
+2024-05-09T18:30:00.557Z - Error: There was an error, while reading single Message: TypeError: Invalid HexEthAddress: value not valid hex string of length 40: "0xeD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+
+2024-05-09T18:30:03.564Z - Error: There was an error, while reading single Message: TypeError: Invalid HexEthAddress: value not valid hex string of length 40: "0xeD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+
+2024-05-09T18:30:06.570Z - Error: There was an error, while reading single Message: TypeError: Invalid HexEthAddress: value not valid hex string of length 40: "0xeD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+
+2024-05-09T18:30:09.575Z - Error: There was an error, while reading single Message: TypeError: Invalid HexEthAddress: value not valid hex string of length 40: "0xeD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+
+2024-05-09T18:30:12.581Z - Error: There was an error, while reading single Message: TypeError: Invalid HexEthAddress: value not valid hex string of length 40: "0xeD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+
+2024-05-09T18:30:15.587Z - Error: There was an error, while reading single Message: TypeError: Invalid HexEthAddress: value not valid hex string of length 40: "0xeD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+
+2024-05-09T18:30:18.593Z - Error: There was an error, while reading single Message: TypeError: Invalid HexEthAddress: value not valid hex string of length 40: "0xeD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+
+2024-05-09T18:30:21.599Z - Error: There was an error, while reading single Message: TypeError: Invalid HexEthAddress: value not valid hex string of length 40: "0xeD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+
+2024-05-09T18:30:24.605Z - Error: There was an error, while reading single Message: TypeError: Invalid HexEthAddress: value not valid hex string of length 40: "0xeD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+
+2024-05-09T18:30:27.609Z - Error: There was an error, while reading single Message: TypeError: Invalid HexEthAddress: value not valid hex string of length 40: "0xeD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+
+2024-05-09T18:30:30.613Z - Error: There was an error, while reading single Message: TypeError: Invalid HexEthAddress: value not valid hex string of length 40: "0xeD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+
+2024-05-09T18:30:33.618Z - Error: There was an error, while reading single Message: TypeError: Invalid HexEthAddress: value not valid hex string of length 40: "0xeD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+
+2024-05-09T18:30:56.858Z - Error: There was an error while creating Users feed: This feed already exists!
+
+2024-05-09T18:30:56.860Z - Error: There was an error while initalizing the chat for the feed (initChatRoom): Could not create Users feed!
+
+2024-05-09T18:31:04.618Z - Error: There was an error, while reading single Message: TypeError: Invalid HexEthAddress: value not valid hex string of length 40: "eD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+
+2024-05-09T18:31:07.624Z - Error: There was an error, while reading single Message: TypeError: Invalid HexEthAddress: value not valid hex string of length 40: "eD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+
+2024-05-09T18:31:10.630Z - Error: There was an error, while reading single Message: TypeError: Invalid HexEthAddress: value not valid hex string of length 40: "eD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+
+2024-05-09T18:31:13.637Z - Error: There was an error, while reading single Message: TypeError: Invalid HexEthAddress: value not valid hex string of length 40: "eD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+
+2024-05-09T18:31:16.645Z - Error: There was an error, while reading single Message: TypeError: Invalid HexEthAddress: value not valid hex string of length 40: "eD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+
+2024-05-09T18:31:19.652Z - Error: There was an error, while reading single Message: TypeError: Invalid HexEthAddress: value not valid hex string of length 40: "eD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+
+2024-05-09T18:31:22.660Z - Error: There was an error, while reading single Message: TypeError: Invalid HexEthAddress: value not valid hex string of length 40: "eD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+
+2024-05-09T18:31:25.667Z - Error: There was an error, while reading single Message: TypeError: Invalid HexEthAddress: value not valid hex string of length 40: "eD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+
+2024-05-09T18:31:28.673Z - Error: There was an error, while reading single Message: TypeError: Invalid HexEthAddress: value not valid hex string of length 40: "eD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+
+2024-05-09T18:31:31.681Z - Error: There was an error, while reading single Message: TypeError: Invalid HexEthAddress: value not valid hex string of length 40: "eD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+
+2024-05-09T18:31:34.690Z - Error: There was an error, while reading single Message: TypeError: Invalid HexEthAddress: value not valid hex string of length 40: "eD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+
+2024-05-09T18:31:37.696Z - Error: There was an error, while reading single Message: TypeError: Invalid HexEthAddress: value not valid hex string of length 40: "eD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+
+2024-05-09T18:31:40.702Z - Error: There was an error, while reading single Message: TypeError: Invalid HexEthAddress: value not valid hex string of length 40: "eD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+
+2024-05-09T18:31:43.709Z - Error: There was an error, while reading single Message: TypeError: Invalid HexEthAddress: value not valid hex string of length 40: "eD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+
+2024-05-09T18:31:46.717Z - Error: There was an error, while reading single Message: TypeError: Invalid HexEthAddress: value not valid hex string of length 40: "eD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+
+2024-05-09T18:31:49.725Z - Error: There was an error, while reading single Message: TypeError: Invalid HexEthAddress: value not valid hex string of length 40: "eD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+
+2024-05-09T18:31:52.730Z - Error: There was an error, while reading single Message: TypeError: Invalid HexEthAddress: value not valid hex string of length 40: "eD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+
+2024-05-09T18:31:55.736Z - Error: There was an error, while reading single Message: TypeError: Invalid HexEthAddress: value not valid hex string of length 40: "eD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+
+2024-05-09T18:31:56.048Z - Error: There was an error while creating Users feed: This feed already exists!
+
+2024-05-09T18:31:56.055Z - Error: There was an error while initalizing the chat for the feed (initChatRoom): Could not create Users feed!
+
+2024-05-09T18:42:39.223Z - Error: There was an error while creating Users feed: This feed already exists!
+
+2024-05-09T18:42:39.228Z - Error: There was an error while initalizing the chat for the feed (initChatRoom): Could not create Users feed!
+
