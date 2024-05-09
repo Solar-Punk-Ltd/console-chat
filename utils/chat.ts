@@ -1,5 +1,5 @@
 import { ethers } from "ethers";
-import { EthAddress, MessageData } from "../lib/chat";
+import { EthAddress, MessageData } from "../libs/chat";
 
 
 // Save messages to localStorage for the corresponding chat room

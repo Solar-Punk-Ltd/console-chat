@@ -1,6 +1,6 @@
 import { Utils } from '@ethersphere/bee-js'
 import { BytesLike, Wallet, utils } from 'ethers'
-import { Sha3Message } from '../lib/chat'
+import { Sha3Message } from '../libs/chat'
 
 
 export function getConsensualPrivateKey(resource: Sha3Message) {
