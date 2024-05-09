@@ -3,10 +3,9 @@ import path from 'path';
 
 export function showOptions() {
     console.log('\n\nOptions:\n');
-    console.log('1) Test One');
-    console.log('2) Start app as Streamer (Aggregator)');
-    console.log('3) Start app as User');
-    console.log('4) Exit\n');
+    console.log('1) Start app as Streamer (Aggregator)');
+    console.log('2) Start app as User who writes');
+    console.log('3) Start app as Reader');
 }
 
 // Will write errors into [TOPIC]_error.log

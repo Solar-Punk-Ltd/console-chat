@@ -8,10 +8,9 @@ const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
 function showOptions() {
     console.log('\n\nOptions:\n');
-    console.log('1) Test One');
-    console.log('2) Start app as Streamer (Aggregator)');
-    console.log('3) Start app as User');
-    console.log('4) Exit\n');
+    console.log('1) Start app as Streamer (Aggregator)');
+    console.log('2) Start app as User who writes');
+    console.log('3) Start app as Reader');
 }
 exports.showOptions = showOptions;
 // Will write errors into [TOPIC]_error.log

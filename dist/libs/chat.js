@@ -101,17 +101,14 @@ function createAggregatedFeedWriter(streamTopic, wallet) {
 }
 // Will write a User object to the Users feed
 // This will be called on client side (user adds self to feed)
-function registerUser(topic, streamerAddress, username, stamp) {
+function registerUser(topic, username, stamp, wallet) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             console.info("Registering user...");
             const roomId = (0, chat_1.generateUsersFeedId)(topic);
-            const wallet = ethers_1.ethers.Wallet.createRandom();
             const address = wallet.address;
             const timestamp = Date.now();
             const signature = yield wallet.signMessage(JSON.stringify({ username, address, timestamp }));
-            localStorage.setItem((0, chat_1.generateUniqId)(topic, streamerAddress), address);
-            localStorage.setItem((0, chat_1.generateUserOwnedFeedId)(topic, address), wallet.privateKey); // We save the private key for this chat (only this chat)
             const user = {
                 username: username,
                 address: address,
@@ -180,14 +177,14 @@ exports.registerUser = registerUser;
 // Write a new message to the feed of the user. Every user has a feed.
 // Index is stored in React state (we are not fetching the feed index from Swarm)
 // This is called client side
-function writeToOwnFeed(topic, streamerAddress, index, messageObj, stamp) {
+function writeToOwnFeed(topic, streamerAddress, index, messageObj, stamp, wallet) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const address = localStorage.getItem((0, chat_1.generateUniqId)(topic, streamerAddress));
+            const address = wallet.address;
             if (!address)
                 throw "Could not get address from local storage!"; // This suggests that the user haven't registered yet for this chat
             const feedID = (0, chat_1.generateUserOwnedFeedId)(topic, address);
-            const privateKey = localStorage.getItem(feedID); // Private key for this single chat is stored in local storage
+            const privateKey = wallet.privateKey; // Private key for this single chat is stored in local storage
             const feedTopicHex = bee.makeFeedTopic(feedID);
             if (!privateKey)
                 throw "Could not get private key from local storage!";

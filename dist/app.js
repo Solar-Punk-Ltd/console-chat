@@ -15,26 +15,28 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const chatAggregator_1 = require("./libs/chatAggregator");
+const chatUserSide_1 = require("./libs/chatUserSide");
 const other_1 = require("./utils/other");
 const chat_1 = require("./libs/chat");
 const common_1 = require("./utils/common");
+const ethers_1 = require("ethers");
 const readline = require('readline').createInterface({
     input: process.stdin,
     output: process.stdout
 });
 let chatWriter = null;
 let agState = chatAggregator_1.initialStateForChatAggregator; // State, on Aggregator side
-//let chatStateUser = initialStateForChatUserSide;
+let wState = chatUserSide_1.initialStateForChatUserSide; // State, the Writer
+let rState = chatUserSide_1.initialStateForChatUserSide; // State, Reader
 const X_NUMBER = 100;
 (0, other_1.showOptions)();
 readline.question('Choose an option: ', (option) => {
     switch (option) {
         case '1':
-            console.log("Hello World!");
             Aggregation();
             break;
         case '2':
-            console.log(process.env.HELLO);
+            Writer();
             break;
         case '3':
             console.log("Option 3");
@@ -63,6 +65,49 @@ function Aggregation() {
         }
         catch (error) {
             console.error("Error in Aggregator: ", error);
+        }
+    });
+}
+// User who writes
+function Writer() {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const topic = process.env.TOPIC;
+            const stamp = process.env.STAMP;
+            const streamerAddress = "0xeD159dF6717cFa27cfCAC26f9efC2d7980debD49";
+            const username = "Tester";
+            const wallet = ethers_1.ethers.Wallet.createRandom();
+            const registerResult = yield (0, chat_1.registerUser)(topic, username, stamp, wallet);
+            if (!registerResult)
+                throw "Error while registering user!";
+            // Send messages in a loop
+            for (let i = 0; i < X_NUMBER; i++) {
+                const message = {
+                    message: `Message ${i}`,
+                    timestamp: Date.now(),
+                    username,
+                    address: wallet.address
+                };
+                const ref = yield (0, chat_1.writeToOwnFeed)(topic, streamerAddress, wState.ownFeedIndex, message, stamp, wallet);
+                // Increment own feed index
+                wState = (0, chatUserSide_1.chatUserSideReducer)(wState, { type: chatUserSide_1.ChatActions.UPDATE_OWN_FEED_INDEX, payload: { ownFeedIndex: wState.ownFeedIndex + 1 } });
+                yield (0, common_1.sleep)(2 * 1000); // 2 seconds
+            }
+            // Periodically write a new message, like "MESSAGE 1"
+        }
+        catch (error) {
+            console.error("Error in Writer: ", error);
+        }
+    });
+}
+// User who reads
+function Reader() {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            // Read the feed
+        }
+        catch (error) {
+            console.error("Error in Reader: ", error);
         }
     });
 }

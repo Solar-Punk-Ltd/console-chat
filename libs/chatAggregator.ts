@@ -85,7 +85,7 @@ interface State {
 
 export const initialStateForChatAggregator: State = {
   users: [],
-  chatIndex: 0,
+  chatIndex: 0, 
   userFeedIndex: 0,
   messages: [],
   locked: false,

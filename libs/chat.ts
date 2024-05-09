@@ -125,17 +125,14 @@ async function createAggregatedFeedWriter(streamTopic: string, wallet: Wallet): 
 
 // Will write a User object to the Users feed
 // This will be called on client side (user adds self to feed)
-export async function registerUser(topic: string, streamerAddress: EthAddress, username: string, stamp: BatchId) {
+export async function registerUser(topic: string, username: string, stamp: BatchId, wallet: ethers.Wallet) {
   try {
     console.info("Registering user...");
     const roomId: RoomID = generateUsersFeedId(topic);
-    const wallet = ethers.Wallet.createRandom();
 
     const address = wallet.address as EthAddress;
     const timestamp = Date.now();
     const signature = await wallet.signMessage(JSON.stringify({ username, address, timestamp })) as unknown as Signature;
-    localStorage.setItem(generateUniqId(topic, streamerAddress), address as string);
-    localStorage.setItem(generateUserOwnedFeedId(topic, address), wallet.privateKey);        // We save the private key for this chat (only this chat)
     
     const user: User = {
       username: username,
@@ -209,14 +206,15 @@ export async function writeToOwnFeed(
   streamerAddress: EthAddress,
   index: number,
   messageObj: MessageData,
-  stamp: BatchId
+  stamp: BatchId,
+  wallet: ethers.Wallet
 ): Promise<Reference|null> {
   try {
-    const address: EthAddress | null = localStorage.getItem(generateUniqId(topic, streamerAddress)) as EthAddress;
-    if (!address) throw "Could not get address from local storage!"                       // This suggests that the user haven't registered yet for this chat
+    const address = wallet.address as EthAddress;
+    if (!address) throw "Could not get address from local storage!"                           // This suggests that the user haven't registered yet for this chat
 
     const feedID = generateUserOwnedFeedId(topic, address);
-    const privateKey = localStorage.getItem(feedID);                                      // Private key for this single chat is stored in local storage
+    const privateKey = wallet.privateKey;                                                     // Private key for this single chat is stored in local storage
     const feedTopicHex = bee.makeFeedTopic(feedID);
     if (!privateKey) throw "Could not get private key from local storage!";
 
@@ -227,7 +225,7 @@ export async function writeToOwnFeed(
     const newRef = bytesToHex(newChunk.address()) as Reference
 
     const feedWriter = bee.makeFeedWriter('sequence', feedTopicHex, privateKey);
-    const ref = await feedWriter.upload(stamp, newRef, { index });           // We write to specific index, index is stored in React state
+    const ref = await feedWriter.upload(stamp, newRef, { index });                            // We write to specific index, index is stored in React state
     console.info("Wrote message to own feed with ref ", ref)
 
     return ref;
