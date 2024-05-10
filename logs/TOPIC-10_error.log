@@ -1,0 +1,14 @@
+2024-05-10T08:31:01.040Z - Error: There was an error while creating Users feed: Error: Request failed with status code 404
+
+2024-05-10T08:31:01.042Z - Error: There was an error while initalizing the chat for the feed (initChatRoom): Could not create Users feed!
+
+2024-05-10T08:31:02.355Z - Error: There was an error while trying to register user (chatroom): Could not upload User object to Swarm (reference is null)
+
+2024-05-10T08:31:05.270Z - Error: There was an error while trying to register user (chatroom): Could not upload User object to Swarm (reference is null)
+
+2024-05-10T08:35:50.966Z - Error: There was an error while creating Users feed: Error: Request failed with status code 422
+
+2024-05-10T08:35:50.971Z - Error: There was an error while initalizing the chat for the feed (initChatRoom): Could not create Users feed!
+
+2024-05-10T08:35:54.674Z - Error: There was an error while trying to register user (chatroom): Could not upload User object to Swarm (reference is null)
+

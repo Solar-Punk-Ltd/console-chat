@@ -93,6 +93,8 @@ export async function readNextMessage(state: State, streamTopic: string, streame
     const result = await readSingleMessage(state.chatIndex, streamTopic, streamerAddress);
     if (!result) throw 'Error reading message!';
 
+    console.log(`Message created timestamp: ${result.timestamp} Current timestamp: ${Date.now()} Difference: ${(Date.now()-result.timestamp)/1000}`);
+    
     state = chatUserSideReducer(state, { type: ChatActions.ADD_MESSAGE, payload: { message: result } });                            // Add messagse
     state = chatUserSideReducer(state, { type: ChatActions.ARRANGE });                                                              // Arrange messages
     state = chatUserSideReducer(state, { type: ChatActions.UPDATE_CHAT_INDEX, payload: { chatIndex: state.chatIndex + 1 } });       // Increment chat index

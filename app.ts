@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 dotenv.config();
-import { chatAggregatorReducer, doAggregationCycle, doUpdateUserList, initialStateForChatAggregator } from './libs/chatAggregator';
+import { doAggregationCycle, doUpdateUserList, initialStateForChatAggregator } from './libs/chatAggregator';
 import { ChatActions, chatUserSideReducer, initialStateForChatUserSide, readNextMessage } from './libs/chatUserSide';
 import { showOptions } from './utils/other';
 import { EthAddress, MessageData, initChatRoom, registerUser, writeToOwnFeed } from './libs/chat';
@@ -83,7 +83,7 @@ async function Writer() {
       const ref = await writeToOwnFeed(topic, streamerAddress, wState.ownFeedIndex, message, stamp, wallet);
       // Increment own feed index
       wState = chatUserSideReducer(wState, { type: ChatActions.UPDATE_OWN_FEED_INDEX, payload: { ownFeedIndex: wState.ownFeedIndex + 1 } });
-      await sleep(6 * 1000);        // 6 seconds
+      await sleep(15 * 1000);        // 15 seconds
     }
 
   } catch (error) {

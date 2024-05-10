@@ -91,7 +91,7 @@ function Writer() {
                 const ref = yield (0, chat_1.writeToOwnFeed)(topic, streamerAddress, wState.ownFeedIndex, message, stamp, wallet);
                 // Increment own feed index
                 wState = (0, chatUserSide_1.chatUserSideReducer)(wState, { type: chatUserSide_1.ChatActions.UPDATE_OWN_FEED_INDEX, payload: { ownFeedIndex: wState.ownFeedIndex + 1 } });
-                yield (0, common_1.sleep)(6 * 1000); // 6 seconds
+                yield (0, common_1.sleep)(15 * 1000); // 15 seconds
             }
         }
         catch (error) {
